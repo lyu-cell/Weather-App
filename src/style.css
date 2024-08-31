@@ -1,0 +1,70 @@
+body {
+    display: grid;
+    grid-template-rows: 1fr 5fr .9fr;
+    height: 39.5em;
+    margin: 0px;
+    background-color: black;
+}
+
+.header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    grid-row: 1/2;
+    background-color: #a7f3d0;
+}
+
+.brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.8em;
+    font-weight: 800;
+    grid-column: 1/2;
+    color: white;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    grid-column: 3/4;
+    gap: 4px;
+    padding-bottom: 20px;
+}
+
+input[id="locationInput"] {
+    width: 150px;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 4fr 3fr;
+    grid-template-rows: 1fr;
+    grid-row: 2/3;
+    border-top: 3px solid white;
+    background-color: #d1fae5;
+}
+
+.currentWeatherForecast {
+    justify-self: center;
+    align-self: center;
+    grid-column: 1/2;
+    height: 26em;
+    width: 30em;
+    background-color: #a7f3d0;
+    border: 5px solid #d1fae5;
+}
+
+.futureWeatherForecast {
+    justify-self: center;
+    align-self: center;
+    grid-column: 2/3;
+    background-color: #a7f3d0;
+    height: 26em;
+    width: 22em;
+}
+
+footer {
+    grid-row: 3/4;
+    background-color: #a7f3d0;
+}
