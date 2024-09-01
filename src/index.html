@@ -10,14 +10,45 @@
         <div class="brand">LWForecast</div>
         <form>
             <label for="locationInput" class="(locationLabel)"></label>
-            <input type="text" id="locationInput">
+            <input type="text" id="locationInput" placeholder="Enter City Name Here">
             <button class="searchSubmitBtn">Get Weather</button>
         </form>
     </header>
     <div class="content">
-        <div class="currentWeatherForecast"></div>
+        <div class="currentWeatherForecast">
+            <div class="addressContainer">
+                <span class="addressLabel">Location</span>
+                <span class="address">Dhaka, Bangladesh</span>
+            </div>
+            <div class="tempContainer">
+                <span class="tempLabel">Temperature</span>
+                <span class="temperature">30c°</span>
+            </div>
+            <div class="humidityContainer">
+                <span class="humidityLabel">Humidity</span>
+                <span class="humidity">70%</span>
+            </div>
+            <div class="timezoneContainer">
+                <span class="timezoneLabel">Time Zone</span>
+                <span class="timezone">Asia/Bangladesh</span>
+            </div>
+            <div class="feelslikeContainer">
+                <span class="feelslikeLabel">Feels Like</span>
+                <span class="feelslike">50c</span>
+            </div>
+            <div class="windspeedContainer">
+                <span class="windspeedLabel">Wind Speed</span>
+                <span class="windspeed">55</span>
+            </div>
+            <div class="desAndConContainer">
+                <div class="weatherConLabel">Weather Condition</div>
+                <div class="weatherCondition">Partially Cloudy</div>
+                <div class="weatherDesLabel">Weather Description</div>
+                <div class="weatherDescription">Partly cloudy throughout the day with storms possible.</div>
+            </div>
+        </div>
         <div class="futureWeatherForecast"></div>
     </div>
-    <footer></footer>
+    <footer>Copyright © LyuCell 2024</footer>
 </body>
 </html>

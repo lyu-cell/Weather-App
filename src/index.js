@@ -1,4 +1,3 @@
-import {ui} from "./ui.js"
 import {style} from "./style.css"
 
 
@@ -15,6 +14,18 @@ submitBtn.addEventListener("click", (e) => {
     }
 })
 
+const forecastUiElements = (function () {
+    const locationAddress = document.querySelector('.address')
+    const temperature = document.querySelector(".temperature")
+    const humid = document.querySelector('.humidity')
+    const timeZone = document.querySelector(".timezone")
+    const feelsLike = document.querySelector(".feelslike")
+    const windSpeed = document.querySelector(".windspeed")
+    const weatherCon = document.querySelector(".weatherCondition")
+    const weatherDes = document.querySelector(".weatherDescription")
+    
+    return {locationAddress, temperature, humid, timeZone, feelsLike, windSpeed, weatherCon, weatherDes}
+})()
 
 async function locationWeatherData(place) {
     const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${place}?key=37JHTAYVVJH37V3KZUGSMERW4`, {mode: "cors"})
@@ -24,29 +35,23 @@ async function locationWeatherData(place) {
 
 async function objectData(Data) {
     const date = new Date()
-    const hour = date.getHours()
-    const relevantData = {}
-    relevantData.address = Data.address
-    relevantData.description = Data.description
-    relevantData.timezone = Data.timezone
-    relevantData.condition = Data.days[0].conditions
-    relevantData.temperature = convertToCelsius(Data.days[0].hours[hour].temp)
+    const currentHour = date.getHours()
+    forecastUiElements.locationAddress.textContent = `${Data.resolvedAddress}`
+    forecastUiElements.temperature.textContent = `${convertToCelsius(Data.days[0].hours[currentHour].temp)} C°`
+    forecastUiElements.humid.textContent = `${Math.round(Data.days[0].hours[currentHour].humidity)}%`
+    forecastUiElements.timeZone.textContent = `${Data.timezone}`
+    forecastUiElements.feelsLike.textContent = `${convertToCelsius(Data.days[0].hours[currentHour].feelslike)} C°`
+    forecastUiElements.windSpeed.textContent = `${Data.days[0].hours[currentHour].windspeed} km/h`
+    forecastUiElements.weatherCon.textContent = `${Data.days[0].conditions}`
+    forecastUiElements.weatherDes.textContent = `${Data.days[0].description}`
+
+    console.log(Data.days[0].hours[currentHour].temp)
+    console.log(Data.days[0].hours[currentHour].feelslike)
     console.log(Data)
-    console.log(relevantData)
 }
 
 function convertToCelsius(num) {
     const result = num-32
     const result2 = 5/9
-    return Math.ceil(result * result2)
+    return Math.round(result * result2)
 }
-
-/*
-Address
-timezone
-condition
-temperature
-humidity
-wind speed
-
-*/
