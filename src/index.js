@@ -44,6 +44,7 @@ async function objectData(Data) {
     forecastUiElements.windSpeed.textContent = `${Data.days[0].hours[currentHour].windspeed} km/h`
     forecastUiElements.weatherCon.textContent = `${Data.days[0].conditions}`
     forecastUiElements.weatherDes.textContent = `${Data.days[0].description}`
+    projectWeatherImage(Data.days[0].icon)
 
     console.log(Data.days[0].hours[currentHour].temp)
     console.log(Data.days[0].hours[currentHour].feelslike)
@@ -55,3 +56,12 @@ function convertToCelsius(num) {
     const result2 = 5/9
     return Math.round(result * result2)
 }
+
+
+async function projectWeatherImage(icon) {
+    const weatherReflector = document.querySelector(".reflectionOfWeather")
+    const response = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=ksnTUli7LHRvNmYPTTw4WT8KnxZY4ShT&s=${icon}`, {mode: "cors"})
+    const resolvedResponse = await response.json()
+    weatherReflector.src = resolvedResponse.data.images.original.url
+}
+

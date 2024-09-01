@@ -26,14 +26,27 @@ body {
 form {
     display: flex;
     justify-content: center;
-    align-items: end;
+    align-items: center;
     grid-column: 3/4;
     gap: 4px;
-    padding-bottom: 20px;
+}
+
+.searchSubmitBtn {
+    height: 2em;
+    background-color: #16a34a;
+    border: 1px inset white;
+    color: white;
+    font-weight: 800;
+}
+
+.searchSubmitBtn:hover {
+    background-color: #34d399;
 }
 
 input[id="locationInput"] {
     width: 150px;
+    border: none;
+    height: 1.6em;
 }
 
 .content {
@@ -133,13 +146,12 @@ input[id="locationInput"] {
 }
 
 
-.futureWeatherForecast {
+.reflectionOfWeather {
     display: grid;
     grid-template-rows: repeat(6, 1fr);
     justify-self: center;
     align-self: center;
     grid-column: 2/3;
-    background-color: #34d399;
     border: 3px solid white;
     height: 24em;
     width: 22em;
